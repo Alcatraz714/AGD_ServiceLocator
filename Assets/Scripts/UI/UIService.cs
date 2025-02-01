@@ -9,7 +9,7 @@ using ServiceLocator.Player;
 
 namespace ServiceLocator.UI
 {
-    public class UIService : MonoBehaviour
+    public class UIService : GenericMonoSingleton<UIService>
     {
         [SerializeField] private EventService eventService;
 
@@ -37,23 +37,6 @@ namespace ServiceLocator.UI
         [SerializeField] private TextMeshProUGUI gameEndText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
-
-         // Singleton
-        public static UIService Instance {get{ return instance;}} //getter for the instance
-        private static UIService instance;
-
-        private void Awake() 
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-                Debug.LogError("UI service - 2nd Service called and denied");
-            }
-        }
 
 
         private void Start()

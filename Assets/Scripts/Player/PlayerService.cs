@@ -8,7 +8,7 @@ using PlasticPipe.PlasticProtocol.Client;
 
 namespace ServiceLocator.Player
 {
-    public class PlayerService : MonoBehaviour
+    public class PlayerService : GenericMonoSingleton<PlayerService>
     {
         [SerializeField] public PlayerScriptableObject playerScriptableObject;
 
@@ -18,24 +18,7 @@ namespace ServiceLocator.Player
         private MonkeyView selectedMonkeyView;
         private int health;
 
-        // Singleton
-        public static PlayerService Instance {get{ return instance;}} //getter for the instance
-        private static PlayerService instance;
-
         public int Money { get; private set; }
-
-        private void Awake() 
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-                Debug.LogError("Player service - 2nd Service called and denied");
-            }
-        }
 
         private void Start()
         {

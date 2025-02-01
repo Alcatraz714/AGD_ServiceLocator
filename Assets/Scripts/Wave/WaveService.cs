@@ -10,7 +10,7 @@ using ServiceLocator.Player;
 
 namespace ServiceLocator.Wave
 {
-    public class WaveService : MonoBehaviour
+    public class WaveService : GenericMonoSingleton<WaveService>
     {
         [SerializeField] private EventService eventService;
 
@@ -20,23 +20,6 @@ namespace ServiceLocator.Wave
         private int currentWaveId;
         private List<WaveData> waveDatas;
         private List<BloonController> activeBloons;
-
-        // Singleton
-        public static WaveService Instance {get{ return instance;}} //getter for the instance
-        private static WaveService instance;
-
-        private void Awake() 
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-                Debug.LogError("Wave service - 2nd Service called and denied");
-            }
-        }
 
         private void Start()
         {
