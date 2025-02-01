@@ -16,6 +16,23 @@ namespace ServiceLocator.Map
         private MapData currentMapData;
         private SpriteRenderer tileOverlay;
 
+        // Singleton
+        public static MapService Instance {get{ return instance;}} //getter for the instance
+        private static MapService instance;
+
+         private void Awake() 
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                Debug.LogError("Map service - 2nd Service called and denied");
+            }
+        }
+
         private void Start()
         {
             SubscribeToEvents();
