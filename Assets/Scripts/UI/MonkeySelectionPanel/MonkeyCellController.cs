@@ -20,12 +20,12 @@ namespace ServiceLocator.UI
 
         public void MonkeyDraggedAt(Vector3 dragPosition)
         {
-            PlayerService.Instance.ValidateSpawnPosition(monkeyCellSO.Cost, dragPosition);
+            GameService.Instance.playerService.ValidateSpawnPosition(monkeyCellSO.Cost, dragPosition);
         }
 
         public void MonkeyDroppedAt(Vector3 dropPosition)
         {
-            PlayerService.Instance.TrySpawningMonkey(monkeyCellSO.Type, monkeyCellSO.Cost, dropPosition);
+            GameService.Instance.playerService.TrySpawningMonkey(monkeyCellSO.Type, monkeyCellSO.Cost, dropPosition);
         }
     }
 }
