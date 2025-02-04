@@ -86,7 +86,7 @@ namespace ServiceLocator.Wave.Bloon
         private void ResetBloon()
         {
             WaveService.Instance.RemoveBloon(this);
-            PlayerService.Instance.TakeDamage(bloonScriptableObject.Damage);
+            GameService.Instance.playerService.TakeDamage(bloonScriptableObject.Damage);
             bloonView.gameObject.SetActive(false);
         }
 
@@ -105,7 +105,7 @@ namespace ServiceLocator.Wave.Bloon
             if (HasLayeredBloons())
                 SpawnLayeredBloons();
 
-            PlayerService.Instance.GetReward(bloonScriptableObject.Reward);
+            GameService.Instance.playerService.GetReward(bloonScriptableObject.Reward);
             WaveService.Instance.RemoveBloon(this);
         }
 
