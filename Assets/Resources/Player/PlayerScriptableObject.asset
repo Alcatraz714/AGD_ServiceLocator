@@ -16,7 +16,7 @@ MonoBehaviour:
   Money: 300
   MonkeyScriptableObjects:
   - {fileID: 11400000, guid: f8fc1658394cf7748917d02dda45e571, type: 2}
-  - {fileID: 11400000, guid: a9370d00ef28c7c4d996a0a4e78ede0f, type: 2}
+  - {fileID: 11400000, guid: 9b63c285ba862384d8a168cf5c458c10, type: 2}
   - {fileID: 11400000, guid: 4e36024359151174bb7ebcd801abd128, type: 2}
   ProjectileScriptableObjects:
   - {fileID: 11400000, guid: e340dda60fff3ef448ee486910a3234a, type: 2}
