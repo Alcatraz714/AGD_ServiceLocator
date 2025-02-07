@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e9f78841389ef74295702b371ae6a27, type: 3}
-  m_Name: Monkey_1_SO
+  m_Name: Sharp_Eye_Monkey_SO
   m_EditorClassIdentifier: 
   Type: 0
   Prefab: {fileID: 534948837250446180, guid: a7b6d0649e9427c4682e70a84c411ca9, type: 3}
