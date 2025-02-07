@@ -600,14 +600,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
-      propertyPath: monkeyCellScriptableObjects.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
-      propertyPath: monkeyCellScriptableObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7e59d2e4e596c4049bce2fe6e66638bf, type: 2}
     - target: {fileID: 7182248005041137931, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: m_Name
       value: Canvas - UI Service

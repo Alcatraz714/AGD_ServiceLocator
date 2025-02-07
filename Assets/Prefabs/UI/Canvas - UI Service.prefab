@@ -3012,6 +3012,7 @@ MonoBehaviour:
   monkeyCellPrefab: {fileID: -1759216286440700527, guid: ab95bb937fb867845968459d4a3784b0, type: 3}
   monkeyCellScriptableObjects:
   - {fileID: 11400000, guid: 32d68a98896142d4882e7130b750d952, type: 2}
+  - {fileID: 11400000, guid: 7e59d2e4e596c4049bce2fe6e66638bf, type: 2}
   gameEndPanel: {fileID: 1284288942}
   gameEndText: {fileID: 507616694}
   playAgainButton: {fileID: 1921834386}

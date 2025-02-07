@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using ServiceLocator.Player.Projectile;
 using ServiceLocator.Main;
+using ServiceLocator.UI;
+using ServiceLocator.Sound;
+using ServiceLocator.Map;
 
 namespace ServiceLocator.Player
 {
@@ -9,6 +12,10 @@ namespace ServiceLocator.Player
     {
         private PlayerScriptableObject playerScriptableObject;
         private ProjectilePool projectilePool;
+
+        private UIService uIService_r;
+        private MapService mapService_r;
+        private SoundService soundService_r;
 
         private List<MonkeyController> activeMonkeys;
         private MonkeyView selectedMonkeyView;
@@ -20,6 +27,14 @@ namespace ServiceLocator.Player
         {
             this.playerScriptableObject = playerScriptableObject;
             projectilePool = new ProjectilePool(playerScriptableObject.ProjectilePrefab, playerScriptableObject.ProjectileScriptableObjects);
+        }
+
+        public void Init(UIService uIService, MapService mapService, SoundService soundService)
+        {
+            this.uIService_r = uIService;
+            this.mapService_r = mapService;
+            this.soundService_r = soundService;
+            // after these values are initialized 
             InitializeVariables();
         }
 
@@ -28,8 +43,8 @@ namespace ServiceLocator.Player
             activeMonkeys = new List<MonkeyController>();
             health = playerScriptableObject.Health;
             Money = playerScriptableObject.Money;
-            GameService.Instance.UIService.UpdateHealthUI(health);
-            GameService.Instance.UIService.UpdateMoneyUI(Money);
+            uIService_r.UpdateHealthUI(health);
+            uIService_r.UpdateMoneyUI(Money);
         }
 
         public void Update()
@@ -81,7 +96,7 @@ namespace ServiceLocator.Player
             if (monkeyCost > Money)
                 return;
 
-            GameService.Instance.MapService.ValidateSpawnPosition(dropPosition);
+            mapService_r.ValidateSpawnPosition(dropPosition);
         }
 
         public void TrySpawningMonkey(MonkeyType monkeyType, int monkeyCost, Vector3 dropPosition)
@@ -89,10 +104,10 @@ namespace ServiceLocator.Player
             if (monkeyCost > Money)
                 return;
 
-            if (GameService.Instance.MapService.TryGetMonkeySpawnPosition(dropPosition, out Vector3 spawnPosition))
+            if (mapService_r.TryGetMonkeySpawnPosition(dropPosition, out Vector3 spawnPosition))
             {
                 SpawnMonkey(monkeyType, spawnPosition);
-                GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.SpawnMonkey);
+                soundService_r.PlaySoundEffects(Sound.SoundType.SpawnMonkey);
             }
         }
 
@@ -116,7 +131,7 @@ namespace ServiceLocator.Player
             int reducedHealth = health - damageToTake;
             health = reducedHealth <= 0 ? 0 : health - damageToTake;
 
-            GameService.Instance.UIService.UpdateHealthUI(health);
+            uIService_r.UpdateHealthUI(health);
             if(health <= 0)
                 PlayerDeath();
         }
@@ -124,15 +139,15 @@ namespace ServiceLocator.Player
         private void DeductMoney(int moneyToDedecut)
         {
             Money -= moneyToDedecut;
-            GameService.Instance.UIService.UpdateMoneyUI(Money);
+            uIService_r.UpdateMoneyUI(Money);
         }
 
         public void GetReward(int reward)
         {
             Money += reward;
-            GameService.Instance.UIService.UpdateMoneyUI(Money);
+            uIService_r.UpdateMoneyUI(Money);
         }
 
-        private void PlayerDeath() => GameService.Instance.UIService.UpdateGameEndUI(false);
+        private void PlayerDeath() => uIService_r.UpdateGameEndUI(false);
     }
 }
