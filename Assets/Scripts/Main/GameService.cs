@@ -9,7 +9,7 @@ using ServiceLocator.UI;
 
 namespace ServiceLocator.Main
 {
-    public class GameService : GenericMonoSingleton<GameService>
+    public class GameService : MonoBehaviour
     {
         // Services:
         public EventService EventService { get; private set; }

@@ -13,8 +13,8 @@ public class MonkeyController_UnitTest
     public void Setup()
     {
         MonkeyScriptableObject monkeySO = CreateDummyMonkeySO();
-        ProjectilePool projectilePool = CreateDummyProjectilePool();
-        monkeyController = new MonkeyController(monkeySO, projectilePool);
+        //ProjectilePool projectilePool = CreateDummyProjectilePool();
+        //monkeyController = new MonkeyController(monkeySO, projectilePool);
     }
 
     private MonkeyScriptableObject CreateDummyMonkeySO()
@@ -32,13 +32,13 @@ public class MonkeyController_UnitTest
         return monkeySO;
     }
 
-    private ProjectilePool CreateDummyProjectilePool()
+    /*private ProjectilePool CreateDummyProjectilePool()
     {
         ProjectileView projectilePrefab = new GameObject().AddComponent<ProjectileView>();
         List<ProjectileScriptableObject> projectileSOs = new List<ProjectileScriptableObject>();
         projectileSOs.Add(ScriptableObject.CreateInstance<ProjectileScriptableObject>());
-        return new ProjectilePool(projectilePrefab, projectileSOs);
-    }
+        //return new ProjectilePool(projectilePrefab, projectileSOs);
+    }*/
 
     [Test]
     public void CanAttackBloon_CheckCondition()

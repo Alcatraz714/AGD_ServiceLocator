@@ -23,6 +23,7 @@ namespace ServiceLocator.UI
         [Header("Level Selection Panel")]
         [SerializeField] private GameObject levelSelectionPanel;
         [SerializeField] private Button Map1Button;
+        [SerializeField] private MapButton mapButton;
 
         [Header("Monkey Selection UI")]
         private MonkeySelectionUIController monkeySelectionController;
@@ -66,6 +67,7 @@ namespace ServiceLocator.UI
             this.eventService_r = eventService;
             this.waveService_r = waveService;
             this.playerService_r = playerService;
+            mapButton.Init(eventService_r);
             SubscribeToEvents();
             InitMapSelectionUI();// making this call later so that dependencies are init first
         }
