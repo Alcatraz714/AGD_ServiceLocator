@@ -12,11 +12,11 @@ namespace ServiceLocator.Main
     public class GameService : MonoBehaviour
     {
         // Services:
-        public EventService EventService { get; private set; }
-        public MapService MapService { get; private set; }
-        public WaveService WaveService { get; private set; }
-        public SoundService SoundService { get; private set; }
-        public PlayerService PlayerService { get; private set; }
+        private EventService EventService;
+        private MapService MapService;
+        private WaveService WaveService;
+        private SoundService SoundService;
+        private PlayerService PlayerService;
 
         [SerializeField] private UIService uiService;
         public UIService UIService => uiService;
